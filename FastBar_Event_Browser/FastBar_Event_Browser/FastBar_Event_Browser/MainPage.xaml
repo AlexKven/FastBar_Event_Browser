@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FastBar_Event_Browser.MainPage">
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" x:Name="LoginRow"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Text="FastBar Event Browser" FontSize="18"/>
+        <Label Grid.Row="1" Text="Please log in to view your events."/>
+    </Grid>-->
+</ContentPage>
