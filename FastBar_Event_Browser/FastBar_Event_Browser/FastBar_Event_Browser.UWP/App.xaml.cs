@@ -59,6 +59,7 @@ namespace FastBar_Event_Browser.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+                Xamarin.Forms.DependencyService.Register<SQLiteConnectionFactory>();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

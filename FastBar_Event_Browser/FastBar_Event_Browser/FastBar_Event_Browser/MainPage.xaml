@@ -1,14 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FastBar_Event_Browser.MainPage">
-    <!--<Grid>
+             xmlns:local="clr-namespace:FastBar_Event_Browser"
+             x:Class="FastBar_Event_Browser.MainPage" SizeChanged="This_SizeChanged"
+              Appearing="This_Appearing">
+  
+  <!--<Grid BackgroundColor="#222222">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="auto" x:Name="LoginRow"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Label TextColor="White" Text="FastBar Event Browser" VerticalOptions="Start" HorizontalOptions="Center" Margin="10" FontSize="18"/>
+    <RelativeLayout>
+      
+    </RelativeLayout>
+  <StackLayout Orientation="Vertical" HorizontalOptions="Fill" Grid.Row="1">
+    <Image Source="Assets/FastBar_Logo.png" WidthRequest="200" HeightRequest="55"/>
+    <Label TextColor="White" Text="Please log into your FastBar account to see your events." HorizontalOptions="Center" Margin="4"/>
+    <Entry HorizontalOptions="Fill" Placeholder="Username" Margin="4" x:Name="UsernameBox"/>
+    <Entry HorizontalOptions="Fill" Placeholder="Password" Margin="4" x:Name="PasswordBox" IsPassword="true"/>
+    <Button HorizontalOptions="Center" Margin="4" Text="Login"/>
+  </StackLayout>
+  </Grid>-->
+  
+  <Grid x:Name="MainLayout" BackgroundColor="#222222">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="0"/>
+      <RowDefinition Height="3*"/>
+    </Grid.RowDefinitions>
+    <StackLayout Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill">
+      <Image Source="Assets/fastbar_logo.png" x:Name="LogoImage" Margin="20"/>
+      <Label x:Name="DescriptionText" TextColor="White" VerticalOptions="Fill" HorizontalOptions="Center" Text="Event Browser"/>
+      <Label x:Name="MessageText" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" TextColor="White" VerticalOptions="Fill" HorizontalOptions="Center" Text="Please log in to view your upcoming events" FontSize="20"/>
+      <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto" x:Name="LoginRow"/>
-            <RowDefinition Height="*"/>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="0" x:Name="NarrowRow"/>
         </Grid.RowDefinitions>
-        <Label Text="FastBar Event Browser" FontSize="18"/>
-        <Label Grid.Row="1" Text="Please log in to view your events."/>
-    </Grid>-->
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="0" x:Name="WideColumn"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout>
+          <Entry HorizontalOptions="Fill" Placeholder="Username" Margin="10, 4, 10, 4" x:Name="UsernameBox" HeightRequest="35"/>
+          <Entry HorizontalOptions="Fill" Placeholder="Password" Margin="10, 4, 10, 4" x:Name="PasswordBox" HeightRequest="35" IsPassword="true"/>
+        </StackLayout>
+        <StackLayout x:Name="MovingLayout">
+          <Button x:Name="LoginButton" Margin="10, 4, 10, 4" HeightRequest="35" BackgroundColor="#DDDDDD" HorizontalOptions="Fill" Text="Log In" Clicked="LoginButton_Clicked"/>
+          <Button x:Name="CreateAccountButton" Margin="10, 4, 10, 4" HeightRequest="35" BackgroundColor="#DDDDDD" HorizontalOptions="Fill" Text="Create Account" Clicked="CreateAccountButton_Clicked"/>
+        </StackLayout>
+      </Grid>
+    </StackLayout>
+  </Grid>
+
 </ContentPage>
