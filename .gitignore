@@ -10,7 +10,7 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 TaskNOW/TaskNOW/ApiCodes.cs
-FastBar_Event_Browser\FastBar_Event_Browser\FastBar_Event_Browser\Keys.cs
+FastBar_Event_Browser\FastBar_Event_Browser\FastBar_Event_Browser\FastBar_Event_Browser\Keys.cs
 
 # Build results
 [Dd]ebug/
