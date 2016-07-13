@@ -11,11 +11,15 @@ namespace FastBar_Event_Browser
     {
         private bool? IsNarrowLayout = null;
 
+        //Set to true for the first load of the page (I.E., app startup), then false.
+        public bool AutomaticallyLoadEvents { get; set; } = false;
+
         public MainPage()
         {
             InitializeComponent();
         }
 
+        #region Event Handlers
         private void CreateAccountButton_Clicked(object sender, EventArgs e)
         {
             Device.OpenUri(new Uri("https://getfastbar.com/Account/SignUp"));
@@ -53,12 +57,15 @@ namespace FastBar_Event_Browser
             SetLayout();
             UsernameBox.Text = "";
             MessageText.Text = "Please log in to view your upcoming events.";
+            if (AutomaticallyLoadEvents)
+                NavigateToEventsIfAppropriate();
         }
 
         private void This_SizeChanged(object sender, EventArgs e)
         {
             SetLayout();
         }
+        #endregion
 
         private void IntializePlatformSpecificUI()
         {

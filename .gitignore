@@ -245,3 +245,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/FastBar_Event_Browser/FastBar_Event_Browser/FastBar_Event_Browser/Keys.cs
