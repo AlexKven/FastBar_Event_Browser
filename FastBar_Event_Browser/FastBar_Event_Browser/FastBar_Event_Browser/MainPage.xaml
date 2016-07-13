@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FastBar_Event_Browser"
              x:Class="FastBar_Event_Browser.MainPage" SizeChanged="This_SizeChanged"
-              Appearing="This_Appearing">
+              Appearing="This_Appearing" Title="Login">
   
   <!--<Grid BackgroundColor="#222222">
     <Grid.RowDefinitions>
@@ -34,7 +34,7 @@
     <StackLayout Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill">
       <Image Source="Assets/fastbar_logo.png" x:Name="LogoImage" Margin="20"/>
       <Label x:Name="DescriptionText" TextColor="White" VerticalOptions="Fill" HorizontalOptions="Center" Text="Event Browser"/>
-      <Label x:Name="MessageText" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" TextColor="White" VerticalOptions="Fill" HorizontalOptions="Center" Text="Please log in to view your upcoming events" FontSize="20"/>
+      <Label x:Name="MessageText" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" TextColor="White" VerticalOptions="Fill" HorizontalOptions="Center" FontSize="20"/>
       <Grid>
         <Grid.RowDefinitions>
           <RowDefinition Height="auto"/>
@@ -45,7 +45,7 @@
           <ColumnDefinition Width="0" x:Name="WideColumn"/>
         </Grid.ColumnDefinitions>
         <StackLayout>
-          <Entry HorizontalOptions="Fill" Placeholder="Username" Margin="10, 4, 10, 4" x:Name="UsernameBox" HeightRequest="35"/>
+          <Entry HorizontalOptions="Fill" Placeholder="Email" Margin="10, 4, 10, 4" x:Name="UsernameBox" HeightRequest="35" Keyboard="Email"/>
           <Entry HorizontalOptions="Fill" Placeholder="Password" Margin="10, 4, 10, 4" x:Name="PasswordBox" HeightRequest="35" IsPassword="true"/>
         </StackLayout>
         <StackLayout x:Name="MovingLayout">

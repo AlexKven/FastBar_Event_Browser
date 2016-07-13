@@ -21,13 +21,38 @@ namespace FastBar_Event_Browser
             Device.OpenUri(new Uri("https://getfastbar.com/Account/SignUp"));
         }
 
-        private void LoginButton_Clicked(object sender, EventArgs e)
+        private async void LoginButton_Clicked(object sender, EventArgs e)
         {
+            User currentUser;
+            try
+            {
+                string token = await APIManager.GetToken(UsernameBox.Text, PasswordBox.Text);
+                if (token == null)
+                {
+                    //Failure of some sort
+                    MessageText.Text = "Login unsuccessful. Check your email/password.";
+                }
+                else
+                {
+                    MessageText.Text = "Login success!";
+                }
+                currentUser = new User();
+                currentUser.Token = token;
+                currentUser.Email = UsernameBox.Text;
+                DatabaseManager.LoggedInUser = currentUser;
+                NavigateToEventsIfAppropriate();
+            }
+            catch (System.Net.Http.HttpRequestException)
+            {
+                MessageText.Text = "Error connecting to server. Check your internet connection.";
+            }
         }
 
         private void This_Appearing(object sender, EventArgs e)
         {
             SetLayout();
+            UsernameBox.Text = "";
+            MessageText.Text = "Please log in to view your upcoming events.";
         }
 
         private void This_SizeChanged(object sender, EventArgs e)
@@ -84,6 +109,32 @@ namespace FastBar_Event_Browser
 
                 
                 IsNarrowLayout = false;
+            }
+        }
+
+        internal async void NavigateToEventsIfAppropriate()
+        {
+            if (DatabaseManager.LoggedInUser == null)
+                return;
+            MessageText.Text = "Getting your events...";
+            UsernameBox.Text = DatabaseManager.LoggedInUser.Email;
+            UsernameBox.IsEnabled = false;
+            PasswordBox.IsEnabled = false;
+            LoginButton.IsEnabled = false;
+            CreateAccountButton.IsEnabled = false;
+            var success = await DatabaseManager.TryStoreEventsFromLoggedInUser();
+            UsernameBox.IsEnabled = true;
+            PasswordBox.IsEnabled = true;
+            LoginButton.IsEnabled = true;
+            CreateAccountButton.IsEnabled = true;
+            if (success)
+            {
+                await ((App)App.Current).Navigate(new EventsPage());
+            }
+            else
+            {
+                MessageText.Text = "Error getting your events. Check your connection and credentials, and try again.";
+                UsernameBox.Text = DatabaseManager.LoggedInUser.Email;
             }
         }
     }

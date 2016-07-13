@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FastBar_Event_Browser.EventsPage" Appearing="EventsPage_Appearing">
+  <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill" Orientation="Vertical" Padding="20" BackgroundColor="#222222">
+    <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="StartAndExpand" x:Name="MainStackLayout"/>
+  </ScrollView>
+</ContentPage>
