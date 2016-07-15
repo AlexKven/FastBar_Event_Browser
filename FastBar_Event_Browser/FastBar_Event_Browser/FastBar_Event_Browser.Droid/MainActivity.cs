@@ -19,6 +19,9 @@ namespace FastBar_Event_Browser.Droid
 
             base.OnCreate(bundle);
 
+            new User().ToString();
+            new EventDetails().ToString();
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }

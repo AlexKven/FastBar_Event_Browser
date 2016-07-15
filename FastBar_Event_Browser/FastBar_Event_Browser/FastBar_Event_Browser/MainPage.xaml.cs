@@ -59,6 +59,7 @@ namespace FastBar_Event_Browser
             MessageText.Text = "Please log in to view your upcoming events.";
             if (AutomaticallyLoadEvents)
                 NavigateToEventsIfAppropriate();
+            AutomaticallyLoadEvents = false;
         }
 
         private void This_SizeChanged(object sender, EventArgs e)

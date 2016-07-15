@@ -12,7 +12,6 @@ namespace FastBar_Event_Browser
         public App()
         {
             InitializeComponent();
-
             DatabaseManager.Initialize();
             var startPage = new MainPage() { AutomaticallyLoadEvents = true };
             MainPage = new NavigationPage(startPage);

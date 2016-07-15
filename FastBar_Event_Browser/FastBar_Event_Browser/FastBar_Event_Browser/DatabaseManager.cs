@@ -15,7 +15,6 @@ namespace FastBar_Event_Browser
         public static void Initialize()
         {
             Database = DependencyService.Get<ISQLite>().GetConnection();
-            //Database.DropTable<User>();
             Database.CreateTable<User>();
             Database.CreateTable<EventDetails>();
         }
@@ -53,7 +52,7 @@ namespace FastBar_Event_Browser
 
         public static IEnumerable<EventDetails> RetrieveEvents()
         {
-            return Database.Table<EventDetails>();
+            return Database.Query<EventDetails>("select * from EventDetails order by DateTimeStartUtc asc");
         }
 
         //Tries to update events from logged in user.
@@ -68,10 +67,7 @@ namespace FastBar_Event_Browser
             {
                 events = await APIManager.GetEvents(user.Token);
             }
-            catch (System.Net.Http.HttpRequestException ex)
-            {
-
-            }
+            catch (System.Net.Http.HttpRequestException) { }
 
             if (events == null)
                 return false;
