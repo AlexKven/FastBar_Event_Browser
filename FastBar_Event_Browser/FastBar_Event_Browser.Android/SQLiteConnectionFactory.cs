@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
-using FastBar_Event_Browser.Droid;
 using System.IO;
+using FastBar_Event_Browser.Android;
 
 [assembly: Xamarin.Forms.Dependency(typeof(SQLiteConnectionFactory))]
-namespace FastBar_Event_Browser.Droid
+namespace FastBar_Event_Browser.Android
 {
-    class SQLiteConnectionFactory// : ISQLite
+    class SQLiteConnectionFactory : ISQLite
     {
         public SQLiteConnection GetConnection()
         {

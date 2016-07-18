@@ -15,8 +15,8 @@ namespace FastBar_Event_Browser
         public static void Initialize()
         {
             Database = DependencyService.Get<ISQLite>().GetConnection();
-            Database.CreateTable<User>();
-            Database.CreateTable<EventDetails>();
+            Database.CreateTable(typeof(User));
+            Database.CreateTable(typeof(EventDetails));
         }
 
         public static User LoggedInUser
