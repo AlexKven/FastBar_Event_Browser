@@ -9,12 +9,24 @@ namespace FastBar_Event_Browser
 {
     public partial class App : Application
     {
+        string exception;
+
         public App()
         {
-            InitializeComponent();
-            DatabaseManager.Initialize();
-            var startPage = new MainPage() { AutomaticallyLoadEvents = true };
-            MainPage = new NavigationPage(startPage);
+            MainPage = new NavigationPage(new Page1());
+            return;
+            try
+            {
+                InitializeComponent();
+                DatabaseManager.Initialize();
+                var startPage = new MainPage() { AutomaticallyLoadEvents = true };
+                MainPage = new NavigationPage(startPage);
+            }
+            catch (Exception ex)
+            {
+                var startPage = new MainPage() { ExceptionMessage = ex.Message };
+                MainPage = new NavigationPage(startPage);
+            }
         }
 
         public async Task Navigate(Page navigateTo)
