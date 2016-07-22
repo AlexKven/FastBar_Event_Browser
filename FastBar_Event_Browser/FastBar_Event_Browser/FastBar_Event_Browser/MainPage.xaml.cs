@@ -55,6 +55,7 @@ namespace FastBar_Event_Browser
         private void This_Appearing(object sender, EventArgs e)
         {
             SetLayout();
+            IntializePlatformSpecificUI();
             UsernameBox.Text = "";
             MessageText.Text = "Please log in to view your upcoming events.";
             if (AutomaticallyLoadEvents)
@@ -75,6 +76,7 @@ namespace FastBar_Event_Browser
                 //For some strange reason, Android seems to be ignoring placeholder text color.
                 //TODO: Investigate why placeholder text color isn't working on Android.
                 PasswordBox.PlaceholderColor = UsernameBox.PlaceholderColor = Color.FromHex("DDDDDD");
+                PasswordBox.TextColor = UsernameBox.TextColor = Color.White;
             });
 
             LogoImage.Source = Device.OnPlatform(
